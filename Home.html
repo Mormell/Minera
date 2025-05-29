@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minera - Stijl in Steen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+  body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      background-image: url('images/Badkamer6.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .logo-image {
+      position: absolute;
+      top: 15px;
+      left: 50px;
+      width: 150px;
+      height: auto;
+      border-radius: 10px; 
+      object-fit: cover;
+      z-index: 10;
+    }
+
+    .contact-top-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      max-width: 200px;
+      line-height: 1.3;
+      text-align: right;
+    }
+
+
+    header {
+      background-color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header p {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: #dcdcdc;
+      letter-spacing: 0.08em;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+      transition: color 0.3s ease;
+    }
+
+    header p:hover {
+      color: #a3c293; /* lichte groene tint */
+      text-shadow: 2px 2px 5px rgba(163, 194, 147, 0.8);
+    }
+
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    main {
+      padding: 3rem 1rem;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+  section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+  }
+
+
+    section h2, section h3 {
+      font-size: 2rem;
+      margin-top: 0;
+      color: #ffffff;
+    }
+
+    section ul {
+      padding-left: 1.5rem;
+    }
+
+    section li {
+      margin-bottom: 0.5rem;
+    }
+
+    section a {
+      color: #cde5d1;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+
+<body>
+  <!-- Logo bovenaan links -->
+  <img src="Images/Logo.png" alt="Minera Logo" class="logo-image">
+
+  <!-- Contact info rechtsboven -->
+  <div class="contact-top-right">
+    <p>Erasmuspad 10</p>
+    <p>1052KP Rotterdam</p>
+    <p>649414@hmcollege.nl</p>
+    <p>KvK nr.: 33695059</p>
+    <p>BTW nr.: NL001234567B01</p>
+  </div>
+
+  <header>
+    <h1>Minera</h1>
+    <p>Stijl in steen – Maatwerk badkamers met natuurlijke luxe</p>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="Products.html">Producten</a></li>
+        <li><a href="Advise.html">Advies</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="Customers.html">Klantgegevens</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Welkom bij Minera</h2>
+      <p>Minera is dé badkamerspeciaalzaak voor wie design, duurzaamheid en vakmanschap zoekt. Wij creëren unieke maatwerkoplossingen met hoogwaardige natuurstenen materialen.</p>
+    </section>
+
+    <section class="kenmerken">
+      <h3>Onze specialisatie</h3>
+      <ul>
+        <li>Maatwerk in natuursteen: marmer, graniet, leisteen en meer</li>
+        <li>Exclusieve totaalontwerpen en 3D-visualisaties</li>
+        <li>Ambachtelijk vakmanschap met duurzame materialen</li>
+        <li>Persoonlijke begeleiding en advies op maat</li>
+      </ul>
+    </section>
+
+    <section class="verder">
+      <h3>Waar wil je naartoe?</h3>
+      <ul>
+        <li><a href="Products.html">Ontdek onze producten</a></li>
+        <li><a href="Advise.html">Ontvang persoonlijk advies</a></li>
+        <li><a href="Contact.html">Maak kennis met ons team</a></li>
+        <li><a href="Customer.html">Bekijk klantgegevens</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Minera – Stijl in Steen</p>
+  </footer>
+</body>
+</html>

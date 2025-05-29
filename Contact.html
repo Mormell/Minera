@@ -1,0 +1,283 @@
+    <!DOCTYPE html>
+    <html lang="nl">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact – Minera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+    body {
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+        background-image: url('images/Badkamer6.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .logo-image {
+        position: absolute;
+        top: 15px;
+        left: 50px;
+        width: 150px;
+        height: auto;
+        border-radius: 10px; 
+        object-fit: cover;
+        z-index: 10;
+    }
+
+    header {
+        background-color: rgba(0, 0, 0, 0.5);
+        text-align: center;
+        padding: 2rem 1rem;
+        z-index: 5;
+    }
+
+    header h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        margin: 0;
+        color: #e0e0e0;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    }
+
+    header p {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.4rem;
+        color: #dcdcdc;
+        letter-spacing: 0.08em;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        margin-top: 6px;
+        transition: color 0.3s ease;
+    }
+
+    header p:hover {
+        color: #a3c293; /* lichte groene tint */
+        text-shadow: 2px 2px 5px rgba(163, 194, 147, 0.8);
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+
+    nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0.5rem 1.2rem;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    main {
+        padding: 3rem 1rem;
+        background-color: rgba(0, 0, 0, 0.4); /* zelfde als home */
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .contact-container {
+        display: flex;
+        flex-direction: row;
+        background-color: rgba(255, 255, 255, 0.2); /* zelfde als home sectie */
+        border-radius: 15px;
+        padding: 40px 50px;
+        max-width: 900px;
+        width: 100%;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        gap: 50px;
+        color: #ffffff; /* wit */
+    }
+
+    .contact-container > section {
+        flex: 1;
+    }
+
+    .contact-container h2 {
+        margin-top: 0;
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+        color: #ffffff; /* wit */
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* Formulier styling */
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+        font-size: 1.1rem;
+        color: #ffffff; /* wit */
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 2px solid #ffffff; /* witte rand */
+        box-sizing: border-box;
+        background-color: rgba(0, 0, 0, 0.4); /* donkerdere transparante achtergrond */
+        color: #ffffff; /* wit */
+        transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #a3c293; /* lichte groene tint */
+        background-color: rgba(0, 0, 0, 0.6);
+        outline: none;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    button.btn {
+        background-color: #4a6a3f;
+        color: white;
+        padding: 14px 30px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        display: block;
+        margin: 30px auto 0;
+        font-weight: 700;
+        box-shadow: 0 6px 12px rgba(74, 106, 63, 0.7);
+        transition: background-color 0.3s ease;
+    }
+
+    button.btn:hover {
+        background-color: #3a5230;
+    }
+
+    /* Contactpersonen rechts */
+    .contact-people {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        padding: 20px 30px;
+        color: #3a3a32; /* iets donkerder groen/bruin */
+        font-weight: 600;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .contact-people p {
+        margin: 0;
+        line-height: 1.4;
+        font-size: 1rem;
+        color: #2f3a1e; /* groenige tint */
+    }
+
+    .contact-people p strong {
+        font-size: 1.1rem;
+        color: #ffffff; /* wit */
+    }
+
+    /* Responsive voor smalle schermen */
+    @media (max-width: 768px) {
+        .contact-container {
+        flex-direction: column;
+        padding: 30px 20px;
+        }
+        .contact-people {
+        margin-top: 30px;
+        padding: 15px 20px;
+        }
+    }
+        footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    }
+    
+    </style>
+    </head>
+    <body>
+
+    <!-- Logo -->
+    <img src="Images/Logo.png" alt="Minera Logo" class="logo-image">
+
+    <header>
+    <h1>Minera</h1>
+    <p>Stijl in steen – Maatwerk badkamers met natuurlijke luxe</p>
+    <nav>
+        <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="Products.html">Producten</a></li>
+        <li><a href="Advise.html">Advies</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="Customers.html">Klantgegevens</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <main>
+    <section class="contact-container">
+        <section>
+        <h2>Contact us</h2>
+        <form id="contactForm">
+            <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+            </div>
+            <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+31 6 12345678">
+            </div>
+            <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required placeholder="Your message here"></textarea>
+            </div>
+            <button type="submit" class="btn">Send</button>
+        </form>
+        </section>
+
+        <section class="contact-people">
+        <h2>Contactpersonen</h2>
+        <p><strong>Isabelle</strong><br>+31 6 25444782<br>649414@hmcollege.nl</p>
+        <p><strong>Bas</strong><br>+31 6 12345678<br>bas@example.com</p>
+        <p><strong>Charlotte</strong><br>+31 6 87654321<br>charlotte@example.com</p>
+
+        </section>
+    </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Minera – Stijl in Steen</p>
+    </footer>
+    </body>
+    </html>
