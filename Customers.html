@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Data – Minera</title>
+
+    <!-- External resources -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-image: url('images/Badkamer6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Logo styling */
+        .logo-image {
+            position: absolute;
+            top: 15px;
+            left: 50px;
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            z-index: 10;
+        }
+
+        /* Hidden contact info */
+        .contact-top-right {
+            display: none;
+        }
+
+        /* Header section */
+        header {
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        header h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        header p {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: #dcdcdc;
+            letter-spacing: 0.08em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            margin-top: 6px;
+            transition: color 0.3s ease;
+        }
+
+        header p:hover {
+            color: #a3c293;
+            text-shadow: 2px 2px 5px rgba(163, 194, 147, 0.8);
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Main content area */
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 1rem;
+            background-color: rgba(0, 0, 0, 0.4);
+            flex-direction: column;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Login form container */
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+            z-index: 10;
+        }
+
+        .login-container h2 {
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Form elements */
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            color: #cde5d1;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+
+        /* Submit button */
+        input[type="submit"] {
+            background-color: #4a6a3f;
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            padding: 0.8rem 2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3a5230;
+        }
+
+        /* Error message */
+        .error-message {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        /* Customer content container */
+        #customerContent {
+            display: none;
+            max-width: 900px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            color: #f1f1f1;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        /* Tab navigation */
+        .tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .tab-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .tab-button:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .tab-button.active {
+            background-color: #4a6a3f;
+            color: #ffffff;
+            border-bottom: 2px solid #4a6a3f;
+            position: relative;
+            top: 2px;
+        }
+
+        /* Tab content */
+        .tab-content {
+            display: none;
+            padding-top: 1rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Customer content styling */
+        #customerContent h2 {
+            font-size: 2rem;
+            color: #a3c293;
+            border-bottom: 2px solid rgba(163, 194, 147, 0.5);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        #customerContent h3 {
+            font-size: 1.4rem;
+            color: #d3ead1;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        #customerContent p, #customerContent li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        #customerContent ul {
+            padding-left: 1.5rem;
+            list-style: disc;
+        }
+
+        /* Questions section */
+        #questionsSection {
+            display: none;
+            margin-top: 2rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            max-width: 800px;
+            width: 100%;
+            color: #ffffff;
+        }
+
+        #questionsSection h1 {
+            color: #a3c293;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .question {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .question h3 {
+            margin-top: 0;
+            color: #d3ead1;
+        }
+
+        .question p {
+            margin: 0.5rem 0;
+        }
+
+        .remove-btn {
+            background-color: #cb4335;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .remove-btn:hover {
+            background-color: #a93226;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #ffffff;
+            position: relative;
+            z-index: 20;
+        }
+
+        footer .social-icons {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .social-icons a {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        footer .social-icons i {
+            font-size: 28px;
+            margin: 0 15px;
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer .social-icons i:hover {
+            color: #3b7a3f;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .logo-image {
+                position: static;
+                display: block;
+                margin: 15px auto 0;
+                width: 120px;
+            }
+
+            footer {
+                padding: 0.8rem;
+            }
+
+            footer .social-icons i {
+                font-size: 24px;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <img src="Images/Logo.png" alt="Minera Logo" class="logo-image">
+
+    <header>
+        <h1>Minera</h1>
+        <p>Stijl in steen – Maatwerk badkamers met natuurlijke luxe</p>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Advise.html">Advies</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Customers.html">Klantgegevens</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Login form -->
+        <div class="login-container" id="loginPage">
+            <h2>Inloggen Minera</h2>
+            <form id="loginForm">
+                <label for="username">Gebruikersnaam</label>
+                <input type="text" id="username" name="username" required autocomplete="username" placeholder="Type 'username'" />
+
+                <label for="password">Wachtwoord</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="'Type password'" />
+
+                <div class="error-message" id="errorMsg">Ongeldige gebruikersnaam of wachtwoord</div>
+
+                <input type="submit" value="Inloggen" />
+            </form>
+        </div>
+
+        <!-- Questions section -->
+        <div id="questionsSection">
+            <div id="questionsContainer"></div>
+        </div>
+
+        <!-- Customer content (hidden until login) -->
+        <div id="customerContent">
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'klantendossier')">klantendossier</button>
+                <button class="tab-button" onclick="openTab(event, 'klantenvragen')">Klanten Vragen</button>
+            </div>
+
+            <!-- Customer dossier tab -->
+            <div id="klantendossier" class="tab-content active">
+                <h2>klantendossier: Rooderick & Roobert</h2>
+                <p><strong>Leeftijd:</strong> 44 jaar en 49 jaar</p>
+                <p><strong>Woonplaats:</strong> Hilversum</p>
+
+                <h3>Woning</h3>
+                <ul>
+                    <li>Vrijstaande villa met moderne uitstraling</li>
+                    <li>Glas, open ruimtes en natuurlijke luxe</li>
+                    <li>Voorzien van zwembad, sportruimte en terrarium</li>
+                    <li>Materialen: marmer, glas, hout, staal en groen</li>
+                    <li>High-tech technologieën, ruime oprit en grote tuin</li>
+                </ul>
+
+                <h3>Rooderick</h3>
+                <ul>
+                    <li>Charismatische CEO van vastgoedbedrijf</li>
+                    <li>Resultaatgericht, dominant, kritisch</li>
+                    <li>Verfijnde smaak en zelfverzekerd voorkomen</li>
+                </ul>
+
+                <h3>Roobert</h3>
+                <ul>
+                    <li>Introvert, praktisch en doordacht</li>
+                    <li>Houdt van rust, reflectie en diepgang</li>
+                    <li>Waardeert intieme gesprekken en balans</li>
+                </ul>
+
+                <p><strong>Samen:</strong> Beiden zoeken een plek die rust, luxe en comfort uitstraalt – een badkamer als toevluchtsoord.</p>
+            </div>
+
+            <!-- Customer questions tab -->
+            <div id="klantenvragen" class="tab-content">
+                <div id="questionsContainer"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/HMCmbovakschool/?locale=nl_NL" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/isabelle._.w?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com/HMCmbovakschool" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 Minera – Stijl in Steen</p>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function openTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+
+            // Hide all tab content
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove 'active' class from all tab buttons
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the specific tab content and mark button as 'active'
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+            // Load questions if the "klantenvragen" tab is opened
+            if (tabName === 'klantenvragen') {
+                loadQuestions();
+            }
+        }
+
+        // Login functionality
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const loginPage = document.getElementById('loginPage');
+            const customerContent = document.getElementById('customerContent');
+
+            if (username === 'Minera' && password === 'steen123') {
+                errorMsg.style.display = 'none';
+                loginPage.style.display = 'none';
+                customerContent.style.display = 'block';
+
+                // Activate the first tab by default
+                document.querySelector('.tab-button').click();
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        // Load questions from localStorage
+        function loadQuestions() {
+            const questionsContainer = document.querySelector('#klantenvragen #questionsContainer');
+            questionsContainer.innerHTML = '<h1>Ontvangen vragen</h1><p>Hierbij de vragen van gebruikers:</p>';
+        
+            const questions = JSON.parse(localStorage.getItem('questions')) || [];
+        
+            questions.forEach((q, index) => {
+                let questionText = "";
+        
+                if (typeof q === 'object' && q !== null) {
+                    questionText = `
+                        <p><strong>Naam:</strong> ${q.name || 'Onbekend'}</p>
+                        <p><strong>Email:</strong> ${q.email || 'Niet opgegeven'}</p>
+                        <p><strong>Telefoon:</strong> ${q.phone || 'Niet opgegeven'}</p>
+                        <p><strong>Bericht:</strong> ${q.message || 'Geen bericht'}</p>
+                    `;
+                } else {
+                    questionText = `<p><strong>Bericht:</strong> ${q}</p>`;
+                }
+        
+                const div = document.createElement('div');
+                div.classList.add('question');
+                div.innerHTML = `
+                    <h3>Vraag ${index + 1}</h3>
+                    ${questionText}
+                    <button class="remove-btn" onclick="removeQuestion(${index})">Verwijder</button>
+                `;
+                questionsContainer.appendChild(div);
+            });
+        }
+
+        // Remove question from localStorage
+        function removeQuestion(index) {
+            let questions = JSON.parse(localStorage.getItem('questions')) || [];
+            questions.splice(index, 1);
+            localStorage.setItem('questions', JSON.stringify(questions));
+            loadQuestions();
+        }
+
+        // Event listeners
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            login();
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('customerContent').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'block';
+            document.getElementById('questionsSection').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
